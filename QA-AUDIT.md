@@ -171,3 +171,15 @@ Recorded pass:
 - Subsequent settled observation: all three connectors scaleY=1; exactly one numbered disc per step.
 
 Result: PASS for the observed normal-motion mobile sequence and destination-gated connector starts; no connector completed before its destination entered this viewport. Hidden initial lines and sequence 01→02, 02→03, 03→04 were observed. This is not a reduced-motion, real touch-device or all-frame certification. Viewport override was reset afterward. No actual browser zoom was changed. No application source/dependencies were changed and no full matrix was repeated. Remaining unsupported checks are intentionally deferred; no further retries are needed in this demo scope.
+
+## Mobile responsive recheck (25 October 2026)
+
+User requested a new mobile-focused pass after adding the floating design switcher. In-app Chromium, production build, CSS viewport emulation; no real phone or Safari/Firefox claim. Initial pass used port 3104 at 360/390/430 x 844. All nine route/width combinations had zero document horizontal overflow and zero broken completed images after scrolling through the pages. Switcher links measured at least 44px high; numbered links were 44px wide. Initial screenshots, settled menu, form, journal, footer and dialog views were inspected.
+
+Found a new regression: floating switcher covered the last footer lines on mobile. Fixed in DesignSwitcher.module.css by reserving 120px of footer bottom space on pages where the switcher exists (safe-area aware). Home selection page is unaffected.
+
+New production build .next-mobile-qa passed. Recheck on port 3105: all nine combinations again had zero horizontal overflow and zero broken completed images. Actual footer padding was 120px. At bottom scroll, footer content bottom was 723.8–755.5px, above switcher top 778.67px; the formerly covered footer lines are reachable and visible. A final footer screenshot was visually inspected.
+
+Focused 390px interactions: all three mobile menus opened and closed with Escape. Options 1/2/3 gallery dialogs opened without horizontal dialog overflow (336.67px wide) and focused their close control. Option 1 draft-only form fields and explanatory text, Option 2 journal layout and Option 3 footer/dialog were visually inspected. No enquiry was submitted. Mobile design switcher opened Option 1 and All Options returned to the three-link homepage. Final console warning/error query returned no entries in the inspected session. Viewport override was restored.
+
+Limits: no complete touch-target/WCAG certification, real-device keyboard/soft-keyboard testing, exhaustive screenshot review of every section at every width, Safari/Firefox, throttling or actual zoom was performed in this pass. The earlier agreed skipped checks remain skipped. This pass fixes and verifies the observed mobile footer regression; it does not claim all-device perfection.

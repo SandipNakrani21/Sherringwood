@@ -16,6 +16,7 @@
 .options a { display: grid; place-items: center; min-width: 44px; min-height: 44px; border-radius: 7px; }
 .options a[aria-current='page'] { background: #790c24; color: #faf8f3; }
 .switcher a:focus-visible { outline: 3px solid #bb9555; outline-offset: 1px; }
+:global(body):has(.switcher) :global(footer) { padding-bottom: max(120px, calc(90px + env(safe-area-inset-bottom))); }
 @media (hover: hover) { .switcher a:hover { background: #eadfc9; color: #790c24; } }
 @media (max-width: 560px) {
   .switcher { display: flex; align-items: center; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); padding: 4px; }
