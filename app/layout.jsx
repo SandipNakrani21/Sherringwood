@@ -1,5 +1,6 @@
 import './globals.css';
 import NavigationBehavior from '../components/NavigationBehavior';
+import DesignSwitcher from '../components/DesignSwitcher';
 
 export const metadata = {
   title: 'Sherringwood World School | Design Collection',
@@ -8,5 +9,5 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  return <html lang="en"><body><NavigationBehavior />{children}</body></html>;
+  return <html lang="en"><body><NavigationBehavior />{children}<DesignSwitcher /></body></html>;
 }
