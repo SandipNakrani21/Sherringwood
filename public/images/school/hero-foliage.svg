@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 650" fill="none">
+ <defs>
+  <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d0c68c"/><stop offset=".4" stop-color="#94934c"/><stop offset="1" stop-color="#424b20"/></linearGradient>
+  <linearGradient id="dark"><stop stop-color="#a6a966"/><stop offset="1" stop-color="#535e2b"/></linearGradient>
+  <filter id="soft" x="-40%" y="-30%" width="180%" height="160%"><feGaussianBlur stdDeviation="2.8"/></filter>
+  <path id="leafShape" d="M0 0C8-16 25-22 39-17C31-4 16 5 0 0Z"/>
+  <g id="branch">
+   <path d="M-25 110C8 76 21 44 46 4" stroke="#777d3d" stroke-width="2"/>
+   <g fill="url(#leaf)">
+    <use href="#leafShape" transform="translate(3 76) rotate(-12) scale(.8)"/>
+    <use href="#leafShape" transform="translate(4 73) rotate(-110) scale(.9)"/>
+    <use href="#leafShape" transform="translate(16 53) rotate(-8) scale(.75)"/>
+    <use href="#leafShape" transform="translate(19 48) rotate(-116) scale(.8)"/>
+    <use href="#leafShape" transform="translate(31 28) rotate(-11) scale(.7)"/>
+    <use href="#leafShape" transform="translate(34 24) rotate(-116) scale(.75)"/>
+    <use href="#leafShape" transform="translate(44 9) rotate(-44) scale(.72)"/>
+   </g>
+  </g>
+ </defs>
+ <g filter="url(#soft)">
+  <path d="M-21 688C-14 531-27 421-15 320C-3 216-30 108-8-25" stroke="#6a7436" stroke-width="4"/>
+  <use href="#branch" transform="translate(-6 -36) rotate(37) scale(1.4)"/>
+  <use href="#branch" transform="translate(7 44) rotate(-62) scale(1.1)" opacity=".85"/>
+  <use href="#branch" transform="translate(-17 240) rotate(18) scale(1.12)"/>
+  <use href="#branch" transform="translate(-15 327) rotate(42) scale(1.22)"/>
+  <use href="#branch" transform="translate(-3 406) rotate(5) scale(1.16)"/>
+  <use href="#branch" transform="translate(-16 503) rotate(28) scale(1.38)"/>
+  <use href="#branch" transform="translate(21 588) rotate(-12) scale(1.26)"/>
+  <g fill="url(#dark)" opacity=".8">
+   <use href="#leafShape" transform="translate(2 22) rotate(33) scale(1.2)"/>
+   <use href="#leafShape" transform="translate(-3 356) rotate(-33) scale(1.1)"/>
+   <use href="#leafShape" transform="translate(1 598) rotate(18) scale(1.25)"/>
+  </g>
+ </g>
+</svg>

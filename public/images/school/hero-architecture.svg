@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 540" preserveAspectRatio="xMidYMid slice">
+ <defs>
+  <linearGradient id="wall" x2="1" y2=".25"><stop stop-color="#590316"/><stop offset=".35" stop-color="#890a20"/><stop offset=".66" stop-color="#8e1129"/><stop offset="1" stop-color="#5e071a"/></linearGradient>
+  <linearGradient id="pillar"><stop stop-color="#27000d" stop-opacity=".45"/><stop offset=".43" stop-color="#b33441" stop-opacity=".3"/><stop offset=".65" stop-color="#d65a57" stop-opacity=".2"/><stop offset="1" stop-color="#480013" stop-opacity=".6"/></linearGradient>
+  <radialGradient id="light"><stop stop-color="#d04744" stop-opacity=".35"/><stop offset="1" stop-color="#73051d" stop-opacity="0"/></radialGradient>
+  <filter id="soft"><feGaussianBlur stdDeviation="2.5"/></filter>
+ </defs>
+ <path fill="url(#wall)" d="M0 0h1440v540H0z"/>
+ <ellipse cx="830" cy="280" rx="520" ry="390" fill="url(#light)"/>
+ <g filter="url(#soft)">
+  <path d="M310-20h42v590h-42zM605-20h66v590h-66zM1124-20h44v590h-44z" fill="url(#pillar)"/>
+  <path d="M1180 520V165a122 122 0 0 1 244 0v355" fill="#410416" fill-opacity=".36" stroke="#c54649" stroke-opacity=".16" stroke-width="14"/>
+  <path d="M1203 520V166a100 100 0 0 1 200 0v354" fill="none" stroke="#24000e" stroke-opacity=".32" stroke-width="13"/>
+  <path d="M1171 0v540m36-540v540" stroke="#c6504d" stroke-opacity=".12" stroke-width="5"/>
+ </g>
+</svg>

@@ -1,0 +1,83 @@
+:root {
+  --maroon: #790c24;
+  --gold: #bb9555;
+  --ivory: #faf8f3;
+  --muted: #857b72;
+  --font-heading: Georgia, serif;
+  --font-body: Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { color-scheme: light; }
+body { margin: 0; background: var(--ivory); color: var(--maroon); font-family: var(--font-body); }
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 3px solid var(--gold); outline-offset: 6px; }
+.selection-page { min-height: 100svh; display: grid; place-items: center; padding: 32px 24px; }
+.option-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 3vw, 32px); width: min(100%, 760px); }
+.option-button { display: grid; place-items: center; min-height: 64px; padding: 18px 28px; border: 1px solid var(--gold); background: var(--maroon); color: var(--ivory); font: 400 clamp(20px, 1.6vw, 25px)/1.3 var(--font-heading); text-align: center; transition: background-color .2s ease, color .2s ease; }
+.placeholder-page { min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 24px; text-align: center; }
+.placeholder-page h1 { font: 400 48px/1.2 var(--font-heading); }
+.placeholder-page p { color: var(--muted); line-height: 1.7; }
+.eyebrow { color: var(--gold); font-size: 10px; letter-spacing: 2px; }
+.back-link { margin-top: 20px; padding: 12px 0; border-bottom: 1px solid var(--gold); }
+@media (hover: hover) and (pointer: fine) { .option-button:hover { background: var(--gold); color: var(--maroon); } }
+@media (max-width: 560px) { .option-grid { grid-template-columns: 1fr; max-width: 280px; gap: 18px; } }
+@media (prefers-reduced-motion: reduce) { .option-button { transition: none; } }
+
+/* Shared recording-inspired staggered letter roll for all option CTAs. */
+.button-motion-label{display:inline-flex;overflow:hidden;vertical-align:middle;line-height:1.35;white-space:pre;isolation:isolate}
+.button-motion-character{display:inline-block;transform:translateY(0);backface-visibility:hidden}
+@media(prefers-reduced-motion:no-preference){
+ a:hover>.button-motion-label>.button-motion-character,
+ button:hover>.button-motion-label>.button-motion-character,
+ a:focus-visible>.button-motion-label>.button-motion-character,
+ button:focus-visible>.button-motion-label>.button-motion-character{animation:button-letter-roll .52s cubic-bezier(.22,.65,.3,1) both;animation-delay:var(--character-delay,0ms)}
+}
+@keyframes button-letter-roll{
+ 0%{transform:translateY(0) rotateX(0);opacity:1}
+ 38%{transform:translateY(-115%) rotateX(35deg);opacity:0}
+ 39%{transform:translateY(115%) rotateX(-35deg);opacity:0}
+ 100%{transform:translateY(0) rotateX(0);opacity:1}
+}
+@media(prefers-reduced-motion:reduce){.button-motion-character{animation:none!important;transform:none!important}}
+
+/* Shared entrance and native scroll progress for all three heroes.
+   Copy remains server-rendered; motion never delays downloading the first photo. */
+[data-scroll-deferred]{content-visibility:auto;contain-intrinsic-block-size:auto var(--deferred-block-size,600px)}
+/* Prevent an anchor or keyboard target from remaining skipped. */
+[data-scroll-deferred]:target,[data-scroll-deferred]:focus-within{content-visibility:visible}
+@media(prefers-reduced-motion:no-preference){
+ :is(#top,#option-two-top,#option-three-top) [data-hero-content]{animation:school-hero-enter .9s cubic-bezier(.2,.7,.25,1) both}
+ :is(#top,#option-two-top,#option-three-top) [data-hero-content="art"]{animation-delay:.12s}
+ @supports(animation-timeline:scroll()){
+  :is(#top,#option-two-top,#option-three-top) [data-hero-content]{
+   animation:school-hero-enter .9s cubic-bezier(.2,.7,.25,1) both,school-hero-scroll linear both;
+   animation-timeline:auto,scroll(root block);
+   animation-range:normal,0px 85vh;
+   animation-composition:replace,add;
+  }
+ }
+}
+@keyframes school-hero-enter{from{opacity:.4;translate:0 22px}to{opacity:1;translate:0 0}}
+@keyframes school-hero-scroll{from{transform:translateY(0)}to{transform:translateY(-32px)}}
+@media(max-width:700px){@keyframes school-hero-scroll{from{transform:translateY(0)}to{transform:translateY(-14px)}}}
+@media(prefers-reduced-motion:reduce){:is(#top,#option-two-top,#option-three-top) [data-hero-content]{animation:none!important;transform:none!important;translate:none!important}}
+@media print{[data-scroll-deferred]{content-visibility:visible;contain-intrinsic-block-size:none}[data-scroll-reveal],:is(#top,#option-two-top,#option-three-top) [data-hero-content]{opacity:1!important;transform:none!important;translate:none!important;animation:none!important}}
+
+/* Comfortable hit areas and predictable keyboard focus. */
+button:focus-visible,summary:focus-visible{outline:3px solid #c49a4e;outline-offset:4px}
+summary{min-width:44px;min-height:44px;align-content:center}
+footer a{overflow-wrap:anywhere}
+dialog button{min-width:44px;min-height:44px}
+@media(max-width:1100px){details summary{display:flex!important;align-items:center;justify-content:center} details summary>span{flex-shrink:0}}
+
+/* One animated hamburger treatment, with native details expanded state. */
+details[data-school-menu]>summary{position:relative;display:block!important;width:44px;height:44px;padding:0;list-style:none}
+details[data-school-menu]>summary>span{position:absolute;left:10px;top:21px;width:24px;height:1px;background:currentColor;transition:transform .3s,opacity .3s}
+details[data-school-menu]>summary>span:nth-child(1){transform:translateY(-7px)}
+details[data-school-menu]>summary>span:nth-child(2){transform:none}
+details[data-school-menu]>summary>span:nth-child(3){transform:translateY(7px)}
+details[data-school-menu][open]>summary>span:nth-child(1){transform:rotate(45deg)}
+details[data-school-menu][open]>summary>span:nth-child(2){opacity:0}
+details[data-school-menu][open]>summary>span:nth-child(3){transform:rotate(-45deg)}
+@media(prefers-reduced-motion:reduce){details[data-school-menu]>summary>span{transition:none}}

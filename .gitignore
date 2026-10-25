@@ -1,0 +1,20 @@
+node_modules/
+.next/
+out/
+*.log
+.env*
+!.env.example
+.video-tools/
+
+.next-qa/
+.next-final/
+# Local QA evidence, research downloads and deployment scratch files
+saved/
+tmp/
+option3-motion/
+*.tar.gz
+school-contact-sheet.jpg
+school-image-inventory.json
+school-image-urls.txt
+school-source.html
+gallery-source.html
